@@ -84,19 +84,6 @@ enum svdCounters {SVD_MXV, SVD_COUNTERS};
 extern long SVDCount[SVD_COUNTERS];
 extern void svdResetCounters(void);
 
-enum svdFileFormats {SVD_F_STH, SVD_F_ST, SVD_F_SB, SVD_F_DT, SVD_F_DB};
-/*
-File formats:
-SVD_F_STH: sparse text, SVDPACK-style
-SVD_F_ST:  sparse text, SVDLIB-style
-SVD_F_DT:  dense text
-SVD_F_SB:  sparse binary
-SVD_F_DB:  dense binary
-*/
-
-/* True if a file format is sparse: */
-#define SVD_IS_SPARSE(format) ((format >= SVD_F_STH) && (format <= SVD_F_SB))
-
 
 /******************************** Functions **********************************/
 
@@ -125,24 +112,8 @@ extern DMat svdTransposeD(DMat D);
 /* Transposes a sparse matrix (returning a new one) */
 extern SMat svdTransposeS(SMat S);
 
-/* Writes an array to a file. */
-extern void svdWriteDenseArray(double *a, int n, char *filename, char binary);
-/* Reads an array from a file, storing its size in *np. */
-extern double *svdLoadDenseArray(char *filename, int *np, char binary);
-
-/* Loads a matrix file (in various formats) into a sparse matrix. */
-extern SMat svdLoadSparseMatrix(char *filename, int format);
-/* Loads a matrix file (in various formats) into a dense matrix. */
-extern DMat svdLoadDenseMatrix(char *filename, int format);
-
-/* Writes a dense matrix to a file in a given format. */
-extern void svdWriteDenseMatrix(DMat A, char *filename, int format);
-/* Writes a sparse matrix to a file in a given format. */
-extern void svdWriteSparseMatrix(SMat A, char *filename, int format);
-
-
 /* Performs the las2 SVD algorithm and returns the resulting Ut, S, and Vt. */
-extern SVDRec svdLAS2(SMat A, long dimensions, long iterations, double end[2], 
+extern SVDRec svdLAS2(SMat A, long dimensions, long iterations, double end[2],
                       double kappa);
 /* Chooses default parameter values.  Set dimensions to 0 for all dimensions: */
 extern SVDRec svdLAS2A(SMat A, long dimensions);

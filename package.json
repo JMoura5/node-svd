@@ -9,12 +9,16 @@
   "dependencies": {
   },
   "author": "Alexandre Kaspar <xion.luhnis@gmail.com>",
-  "contributers": [{
+  "contributors": [{
     "name": "Florian Reifschneider",
     "email": "florian@rocketloop.de"
+  },
+  {
+    "name": "Joao Moura",
+    "email": "joao_moura_@hotmail.com"
   }],
 	"repository": {
-    "type": "git", 
+    "type": "git",
 		"url": "http://github.com/xionluhnis/node-svd.git"
 	},
 	"bugs": {
@@ -28,6 +32,6 @@
       "web": "http://www.wox-xion.ch"
   }],
 	"scripts": {
-		"install": "node-gyp rebuild && cp build/Release/svd.node ./svd.node"
+		"install": "node-gyp rebuild && copy build\\Release\\svd.node .\\svd.node"
 	}
 }
